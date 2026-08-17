@@ -2,3 +2,4 @@
 *.json
 .env*
 meta_secrets*
+.omc/
