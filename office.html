@@ -31,155 +31,190 @@ footer{margin-top:22px;font-size:11px;color:var(--dim)}
 <div class="w">
   <h1>찰떡 픽셀 오피스</h1>
   <p class="sub" id="stamp"></p>
-  <canvas id="stage" width="720" height="340"></canvas>
+  <canvas id="stage" width="760" height="440"></canvas>
   <div class="kpi" id="kpi"></div>
   <h2>오늘 슬롯</h2><ul id="slots"></ul>
   <h2>최근 기록</h2><ul id="events"></ul>
   <footer>3분마다 새로고침 · 슬롯이 돌 때마다 자동 갱신</footer>
 </div>
 <script>
-const D = {"members": [{"id": "poster", "name": "찰떡", "role": "포스팅", "duty": "하루 9슬롯 시장 글. 숫자를 읽고 오늘의 이상한 일을 찾아 쓴다", "status": "working", "why": "", "sprite": "data:image/png;base64,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", "say": "01:00 건너뜀"}, {"id": "interactor", "name": "콩이", "role": "상호작용", "duty": "남의 글에 댓글 달고, 우리 글 답글에 응대한다", "status": "blocked", "why": "쓰레드 키워드검색·멘션 권한이 토큰에 없음 (토큰 재발급 필요)", "sprite": "data:image/png;base64,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", "say": "쓰레드 키워드검색·멘션 권한이 토큰에 없음 (토큰 "}, {"id": "digest", "name": "한입", "role": "AI 소식", "duty": "매일 아침 AI 뉴스를 골라 다이제스트로 낸다", "status": "shaky", "why": "Cowork 예약작업 폴더 문제 — launchd 이전 검토 중", "sprite": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAfCAYAAACCox+xAAAFOklEQVR4nK1XTWhdRRQ+M/eG5o/UIL4otQiCrWAD1UabQFSoWRTctGgiJUp/dt25KBQK4tZCwe66EG03oUiJiihkEYVEQS2pVtGFiKJoSJOi6U/ymvDenZHvzD3zZu69ebjwwOPOmzlzznd+5swZ1b3RQdZaAimlqEhWWSLj1ngMPuvG+DZqxJMdK8SbizxVZDMirZXXC9IyKIKw1jpG05p71UxQ8wFlG51N29yW8Xf3zkHCD2OZB8+kHWcwVQRVReMVPFJCbB0TPkAOq08/M0ZnZ2eI+lIa3jVC7Wj13hr9/NN3dHrsIJ29OsvecoYRqYQi40oe8V5QLRDZg8p+Nn3O0p0mzd1ap91PPFkJAopD6u/qZV7swV7IaA4oC6MkzC3vFDwCECpggJvnp87Tc5Ov0/DQs6wMCqosB4GnCiD2fL3wBYmsjo3U5VKQH9BbGZpGAUQVQfhafZG0dk41xlBv9462/O3AaIQinGjUyIE4ecoLLboeQusbSx4AfiDMYa3oFfEYZEK2nLQwAikfMzfPNH/hHKNGUraj7trOKF/CMLUjyAaYF+jU1sna6GwyoqSeqFBJMTdgHY5sSMKzVWh4bdeID4voEq+k4Z/5PCQdL8XnX9yNk/D91RkyiQtHmB8yZusyTZ0P7eATE4KTMEmI4BVJC+9/jtsFomPL44gVXVq4TBvry9RUThgUQWGTmr4OSG6UxsrQ2o0/eJzkTldWU2fPAB2zR4iWSdEHZKGzY0UpY6w7NY/uG0R8GZqg/3zuChmVbelmzZZookR5EJgzuXcFQEbOW+K1A6MTkZepL1XpTUspSvGJM/st0VGXpDkTQITCigSFKFCiQBkiSy3gVgchyxTxTZRlLFuMRXjA+p75RqWXui7bE1P7yxZrTVkuqLf2iI+3p77Uu1880tvzcNl1fSltLC2yKeKtIgGDRgIKDQcZL8LxrS/9XtpcX/mzPJfXlpAA1udZcAkWT5d+58zR0ub5qfMcb/wad1edwPoirS7/yGsYU1a+4hn0+l/Mgx+AiQzOqURJOCLC5Zh+enGGXjx+MFoYHBtjN3774ZVofujQyzR0aALJ0LLEKjJR36HpqcPjPL8w/X60H/OQTW9Pl8CkfLVXkK7sJTQrlbXUutOvcxwmT9aqvQCA5G8Ec3ACCBhSVLq50XX7/H090UYofPrwK9E9VFQCxVIMi3wgeI87O14zlTwfLS1ztWWTrn35lbqWF7XhoLRzDSC0B0mlEKF4DUmeFzEPIlxzhGP8+L0j6jc163i7Np17pa1rdDYtknLb9vvdVhzh0AvKsovDVm8rkLIW8myu/UP9A3uiVgDrmgGgGCG7a2SR9QIgLNtCABUWuBAEJ22iKlrOGChOXbEV0L5DUorQl1YVHSgIT4Z4KJyTcRV4kS+hgUehKzIw/PPmJxf5O3zgNV8/tiZTcfdUk7wINtdu0VuTrg954+N3q4GIq0DS4IRXe2y5S0hR7ixO2hx73umPqsXDpqAz1pRlUanevP13SbgDJ9t0YHEW8OG0JVHI4A0QWgsBHZIHgj7E8I3qbktkNqO+u8qZ7oX60m74f6vv1H7OrcIoE+2HTEMN3xpw75NT1MU34Ko7TXRi6teFHwhvkdVfrtP/Qf2P7eWH1r7REdQQi1s5vWkVTq1vjMI3jc1fZPw2Dd+3eRuAGvNfFfOevtS/i4VEroz50SVA+DmovIcd6VahW7l9vXQsatv3Rgra8XAtyeUJkPhd4zM/FpBfD7GFocUDe1rP0/wreRXytDQ5eeIBhMPpdYr/BZTdQbfsDjZWAAAAAElFTkSuQmCC", "say": "Cowork 예약작업 폴더 문제 — launchd "}, {"id": "analyst", "name": "눈이", "role": "성과 분석", "duty": "발행한 글의 도달·저장·댓글을 읽어 다음 글에 반영한다", "status": "new", "why": "아직 안 만들어짐", "sprite": "data:image/png;base64,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", "say": "아직 안 만들어짐"}], "slots": [{"name": "미장 초반", "at": "01:00:05", "got": [], "bad": false, "skip": true}], "metrics": {"th_views": 706, "th_likes": 2, "th_replies": 0, "th_followers_count": 0, "ig_media": 7, "ig_followers": 0, "ig_reach": 169}, "events": [{"at": "2026-08-19T01:00:18+09:00", "member": "poster", "action": "건너뜀", "detail": "미장 초반 — 트리거 미달", "ok": true, "link": ""}, {"at": "2026-08-19T01:00:05+09:00", "member": "poster", "action": "슬롯 시작", "detail": "미장 초반 (01:00)", "ok": true, "link": ""}], "now": "2026-08-19 01:21"};
+const D = {"members": [{"id": "poster", "name": "찰떡", "role": "포스팅", "duty": "하루 9슬롯 시장 글. 숫자를 읽고 오늘의 이상한 일을 찾아 쓴다", "status": "working", "why": "", "sprite": "data:image/png;base64,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", "say": "01:00 건너뜀"}, {"id": "interactor", "name": "콩이", "role": "상호작용", "duty": "남의 글에 댓글 달고, 우리 글 답글에 응대한다", "status": "blocked", "why": "쓰레드 키워드검색·멘션 권한이 토큰에 없음 (토큰 재발급 필요)", "sprite": "data:image/png;base64,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", "say": "쓰레드 키워드검색·멘션 권한이 토큰에 없음 (토큰 "}, {"id": "digest", "name": "한입", "role": "AI 소식", "duty": "매일 아침 AI 뉴스를 골라 다이제스트로 낸다", "status": "shaky", "why": "Cowork 예약작업 폴더 문제 — launchd 이전 검토 중", "sprite": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAfCAYAAACCox+xAAAFOklEQVR4nK1XTWhdRRQ+M/eG5o/UIL4otQiCrWAD1UabQFSoWRTctGgiJUp/dt25KBQK4tZCwe66EG03oUiJiihkEYVEQS2pVtGFiKJoSJOi6U/ymvDenZHvzD3zZu69ebjwwOPOmzlzznd+5swZ1b3RQdZaAimlqEhWWSLj1ngMPuvG+DZqxJMdK8SbizxVZDMirZXXC9IyKIKw1jpG05p71UxQ8wFlG51N29yW8Xf3zkHCD2OZB8+kHWcwVQRVReMVPFJCbB0TPkAOq08/M0ZnZ2eI+lIa3jVC7Wj13hr9/NN3dHrsIJ29OsvecoYRqYQi40oe8V5QLRDZg8p+Nn3O0p0mzd1ap91PPFkJAopD6u/qZV7swV7IaA4oC6MkzC3vFDwCECpggJvnp87Tc5Ov0/DQs6wMCqosB4GnCiD2fL3wBYmsjo3U5VKQH9BbGZpGAUQVQfhafZG0dk41xlBv9462/O3AaIQinGjUyIE4ecoLLboeQusbSx4AfiDMYa3oFfEYZEK2nLQwAikfMzfPNH/hHKNGUraj7trOKF/CMLUjyAaYF+jU1sna6GwyoqSeqFBJMTdgHY5sSMKzVWh4bdeID4voEq+k4Z/5PCQdL8XnX9yNk/D91RkyiQtHmB8yZusyTZ0P7eATE4KTMEmI4BVJC+9/jtsFomPL44gVXVq4TBvry9RUThgUQWGTmr4OSG6UxsrQ2o0/eJzkTldWU2fPAB2zR4iWSdEHZKGzY0UpY6w7NY/uG0R8GZqg/3zuChmVbelmzZZookR5EJgzuXcFQEbOW+K1A6MTkZepL1XpTUspSvGJM/st0VGXpDkTQITCigSFKFCiQBkiSy3gVgchyxTxTZRlLFuMRXjA+p75RqWXui7bE1P7yxZrTVkuqLf2iI+3p77Uu1880tvzcNl1fSltLC2yKeKtIgGDRgIKDQcZL8LxrS/9XtpcX/mzPJfXlpAA1udZcAkWT5d+58zR0ub5qfMcb/wad1edwPoirS7/yGsYU1a+4hn0+l/Mgx+AiQzOqURJOCLC5Zh+enGGXjx+MFoYHBtjN3774ZVofujQyzR0aALJ0LLEKjJR36HpqcPjPL8w/X60H/OQTW9Pl8CkfLVXkK7sJTQrlbXUutOvcxwmT9aqvQCA5G8Ec3ACCBhSVLq50XX7/H090UYofPrwK9E9VFQCxVIMi3wgeI87O14zlTwfLS1ztWWTrn35lbqWF7XhoLRzDSC0B0mlEKF4DUmeFzEPIlxzhGP8+L0j6jc163i7Np17pa1rdDYtknLb9vvdVhzh0AvKsovDVm8rkLIW8myu/UP9A3uiVgDrmgGgGCG7a2SR9QIgLNtCABUWuBAEJ22iKlrOGChOXbEV0L5DUorQl1YVHSgIT4Z4KJyTcRV4kS+hgUehKzIw/PPmJxf5O3zgNV8/tiZTcfdUk7wINtdu0VuTrg954+N3q4GIq0DS4IRXe2y5S0hR7ixO2hx73umPqsXDpqAz1pRlUanevP13SbgDJ9t0YHEW8OG0JVHI4A0QWgsBHZIHgj7E8I3qbktkNqO+u8qZ7oX60m74f6vv1H7OrcIoE+2HTEMN3xpw75NT1MU34Ko7TXRi6teFHwhvkdVfrtP/Qf2P7eWH1r7REdQQi1s5vWkVTq1vjMI3jc1fZPw2Dd+3eRuAGvNfFfOevtS/i4VEroz50SVA+DmovIcd6VahW7l9vXQsatv3Rgra8XAtyeUJkPhd4zM/FpBfD7GFocUDe1rP0/wreRXytDQ5eeIBhMPpdYr/BZTdQbfsDjZWAAAAAElFTkSuQmCC", "say": "Cowork 예약작업 폴더 문제 — launchd "}, {"id": "analyst", "name": "눈이", "role": "성과 분석", "duty": "발행한 글의 도달·저장·댓글을 읽어 다음 글에 반영한다", "status": "new", "why": "아직 안 만들어짐", "sprite": "data:image/png;base64,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", "say": "아직 안 만들어짐"}], "slots": [{"name": "미장 초반", "at": "01:00:05", "got": [], "bad": false, "skip": true}], "metrics": {"th_views": 717, "th_likes": 2, "th_replies": 0, "th_followers_count": 0, "ig_media": 7, "ig_followers": 0, "ig_reach": 169}, "events": [{"at": "2026-08-19T01:00:18+09:00", "member": "poster", "action": "건너뜀", "detail": "미장 초반 — 트리거 미달", "ok": true, "link": ""}, {"at": "2026-08-19T01:00:05+09:00", "member": "poster", "action": "슬롯 시작", "detail": "미장 초반 (01:00)", "ok": true, "link": ""}], "now": "2026-08-19 01:27"};
 const c = document.getElementById('stage'), x = c.getContext('2d');
 x.imageSmoothingEnabled = false;
+const W = 760, H = 440, WALL = 150;
 
 const TONE = {working:'#5FD39A', blocked:'#F2857A', shaky:'#F0B93C', new:'#9A8DB2'};
 const imgs = D.members.map(m => { const i = new Image(); i.src = m.sprite; return i; });
+function px(a,b,w,h,col){ x.fillStyle=col; x.fillRect(a,b,w,h); }
 
-function px(cx, cy, w, h, col){ x.fillStyle = col; x.fillRect(cx, cy, w, h); }
+// ── 사무실 배치 ──────────────────────────────────────────
+// 책상 4개(위쪽), 회의 테이블(가운데 아래), 커피(오른쪽), 화이트보드(왼쪽 벽)
+const DESKS = [0,1,2,3].map(i => ({x: 96 + i*168, y: 214}));
+const TABLE = {x: 380, y: 360, r: 62};
+const SEATS = [{x:312,y:352},{x:380,y:326},{x:448,y:352},{x:380,y:392}];
+const COFFEE = {x: 700, y: 300};
+const BOARD  = {x: 92, y: 176};
 
-// 방 — 벽, 바닥, 창문, 화이트보드
-function room(f){
-  px(0,0,720,340,'#0B0814');
-  px(0,0,720,224,'#241B3A');          // 벽
-  px(0,224,720,116,'#3A2C55');        // 바닥
-  px(0,220,720,4,'#1A1330');
-  for(let i=0;i<12;i++) px(i*62,224,2,116,'#33264C');   // 바닥 널
-  px(90,300,540,10,'#2E2246');        // 러그
-  px(96,302,528,6,'#392B58');
+function furniture(f){
+  // 벽 / 바닥
+  px(0,0,W,H,'#0B0814');
+  px(0,0,W,WALL,'#241B3A');
+  px(0,WALL,W,H-WALL,'#3A2C55');
+  px(0,WALL-5,W,5,'#1A1330');
+  for(let i=0;i<14;i++) px(i*56,WALL,2,H-WALL,'#33264C');
+  for(let j=0;j<6;j++) px(0,WALL+j*52,W,2,'#33264C');
 
-  // 창문 — 밤하늘, 별이 반짝
-  [[40,40],[604,40]].forEach(([wx,wy],k)=>{
-    px(wx,wy,76,56,'#120C22'); px(wx+3,wy+3,70,50,'#1B1436');
-    for(let i=0;i<8;i++){
-      const sx=wx+8+((i*17+k*9)%58), sy=wy+8+((i*13+k*5)%40);
+  // 창문
+  [[210,32],[470,32]].forEach(([wx,wy],k)=>{
+    px(wx,wy,84,60,'#120C22'); px(wx+3,wy+3,78,54,'#1B1436');
+    for(let i=0;i<9;i++){
+      const sx=wx+8+((i*19+k*11)%66), sy=wy+8+((i*13+k*7)%44);
       const tw=(Math.sin((f/26)+i+k*2)+1)/2;
       x.globalAlpha=.2+tw*.8; px(sx,sy,2,2,'#F6B81D'); x.globalAlpha=1;
     }
-    px(wx+36,wy,4,56,'#0B0814'); px(wx,wy+26,76,4,'#0B0814');
+    px(wx+40,wy,4,60,'#0B0814'); px(wx,wy+28,84,4,'#0B0814');
   });
 
-  // 벽시계 — 초침이 실제로 돈다
-  px(348,26,34,34,'#1B1436'); px(351,29,28,28,'#F2ECFA');
+  // 벽시계
+  px(370,20,30,30,'#1B1436'); px(373,23,24,24,'#F2ECFA');
   const a=(f/60)%(Math.PI*2);
   x.strokeStyle='#241B3A'; x.lineWidth=2; x.beginPath();
-  x.moveTo(365,43); x.lineTo(365+Math.sin(a)*9, 43-Math.cos(a)*9); x.stroke();
+  x.moveTo(385,35); x.lineTo(385+Math.sin(a)*8, 35-Math.cos(a)*8); x.stroke();
 
-  // 화이트보드 — 오늘 숫자를 붙여둔다
-  px(150,44,180,72,'#0F0B1C'); px(154,48,172,64,'#EDE7F6');
-  x.fillStyle='#2A2040'; x.font='bold 11px "Apple SD Gothic Neo",sans-serif';
+  // 화이트보드 (왼쪽 벽) — 오늘 숫자
+  px(26,52,150,84,'#0F0B1C'); px(30,56,142,76,'#EDE7F6');
   x.textAlign='left'; x.textBaseline='top';
-  x.fillText('오늘', 162, 54);
+  x.fillStyle='#2A2040'; x.font='bold 11px "Apple SD Gothic Neo",sans-serif';
+  x.fillText('오늘', 38, 62);
   x.fillStyle='#5B4682'; x.font='10px "Apple SD Gothic Neo",sans-serif';
-  const board=[
-    '쓰레드 조회  ' + (D.metrics.th_views ?? '—'),
-    '팔로워      ' + (D.metrics.th_followers_count ?? '—'),
-    '인스타 도달  ' + (D.metrics.ig_reach ?? '—'),
-  ];
-  board.forEach((t,i)=> x.fillText(t, 162, 70+i*13));
+  [['쓰레드 조회', D.metrics.th_views], ['팔로워', D.metrics.th_followers_count],
+   ['인스타 도달', D.metrics.ig_reach]].forEach(([k,v],i)=>{
+    x.fillText(k, 38, 78+i*15); x.fillText(v ?? '—', 128, 78+i*15);
+  });
+
+  // 정수기
+  px(COFFEE.x-12,COFFEE.y-46,24,34,'#4A3A66'); px(COFFEE.x-9,COFFEE.y-72,18,26,'#8FB7E8');
+  px(COFFEE.x-12,COFFEE.y-12,24,8,'#33264C');
 
   // 화분
-  px(676,268,20,22,'#4A3A2A'); px(678,262,16,8,'#3F5A33');
-  px(682,248,4,16,'#3F5A33'); px(674,254,8,4,'#4C6B3E'); px(688,256,8,4,'#4C6B3E');
+  px(40,H-60,22,24,'#4A3A2A'); px(42,H-68,18,10,'#3F5A33');
+  px(48,H-88,4,20,'#3F5A33'); px(38,H-80,10,4,'#4C6B3E'); px(54,H-78,10,4,'#4C6B3E');
+
+  // 회의 테이블 (타원)
+  x.fillStyle='#1E1633'; x.beginPath(); x.ellipse(TABLE.x, TABLE.y+8, TABLE.r+6, 34, 0,0,7); x.fill();
+  x.fillStyle='#5B4682'; x.beginPath(); x.ellipse(TABLE.x, TABLE.y, TABLE.r, 30, 0,0,7); x.fill();
+  x.fillStyle='#6B5493'; x.beginPath(); x.ellipse(TABLE.x, TABLE.y-3, TABLE.r-8, 24, 0,0,7); x.fill();
 }
 
-function desk(dx, dy, tone, busy, f){
-  px(dx-4, dy+34, 124, 6, '#1E1633');     // 그림자
-  px(dx, dy, 116, 8, '#5B4682');          // 상판
-  px(dx+2, dy+8, 112, 3, '#48376B');
-  px(dx+6, dy+11, 8, 24, '#40305F');      // 다리
-  px(dx+102, dy+11, 8, 24, '#40305F');
-
-  const my = dy - 36;
-  px(dx+32, my, 52, 34, '#171029');       // 모니터 테두리
-  px(dx+35, my+3, 46, 28, busy ? '#0E2A22' : '#14102A');
-  if (busy){
-    for (let i=0;i<5;i++){
-      const w = 6 + ((i*13 + Math.floor(f/9)) % 32);
-      x.globalAlpha = .5 + .5*Math.sin((f/16)+i);
-      px(dx+38, my+6+i*5, w, 2, tone); x.globalAlpha = 1;
+function deskAt(d, tone, busy, f){
+  px(d.x-52,d.y+22,108,6,'#1E1633');
+  px(d.x-50,d.y-4,100,26,'#5B4682');       // 상판
+  px(d.x-50,d.y-4,100,4,'#6B5493');
+  px(d.x-24,d.y-38,48,32,'#171029');       // 모니터
+  px(d.x-21,d.y-35,42,26, busy?'#0E2A22':'#14102A');
+  if(busy){
+    for(let i=0;i<5;i++){
+      const w=6+((i*13+Math.floor(f/9))%30);
+      x.globalAlpha=.5+.5*Math.sin((f/16)+i);
+      px(d.x-18,d.y-32+i*5,w,2,tone); x.globalAlpha=1;
     }
-  } else {
-    px(dx+38, my+18, 36, 2, '#2C2340');
-  }
-  px(dx+54, my+34, 8, 5, '#171029');      // 목
-  px(dx+44, my+39, 28, 3, '#171029');     // 받침
+  } else px(d.x-18,d.y-22,32,2,'#2C2340');
+  px(d.x+30,d.y-12,9,8,'#F2ECFA');          // 머그
+}
 
-  px(dx+94, dy-8, 9, 8, '#F2ECFA');       // 머그컵
-  px(dx+103, dy-6, 3, 4, '#F2ECFA');
-  if (busy){                               // 김
-    x.globalAlpha=.35+.35*Math.sin(f/22);
-    px(dx+97, dy-14 - (f/9 % 5), 2, 4, '#9A8DB2'); x.globalAlpha=1;
+// ── 에이전트 ─────────────────────────────────────────────
+const rnd = (a,b)=>a+Math.random()*(b-a);
+const agents = D.members.map((m,i)=>({
+  m, i, tone: TONE[m.status]||'#9A8DB2',
+  x: DESKS[i].x, y: DESKS[i].y+46,
+  tx: DESKS[i].x, ty: DESKS[i].y+46,
+  spd: 0.55+Math.random()*0.25, dwell: rnd(60,240), say:'', sayT:0, state:'desk',
+}));
+
+let meetT = rnd(600, 1100), meeting = 0;
+
+function pick(a){
+  // 실제 상태가 행동을 정한다
+  const r = Math.random();
+  if (a.m.status === 'blocked' && r < .5){          // 막힌 팀원은 화이트보드 앞을 서성인다
+    a.tx = BOARD.x + rnd(-34,34); a.ty = BOARD.y + rnd(24,54); a.state='board';
+  } else if (r < .42){
+    a.tx = DESKS[a.i].x + rnd(-8,8); a.ty = DESKS[a.i].y+46; a.state='desk';
+  } else if (r < .58){
+    a.tx = COFFEE.x + rnd(-26,10); a.ty = COFFEE.y + rnd(6,26); a.state='coffee';
+  } else {
+    a.tx = rnd(90, W-90); a.ty = rnd(WALL+56, H-40); a.state='walk';
   }
-  px(dx+8, dy-6, 16, 6, '#C9BEE0');       // 서류
-  px(dx+10, dy-9, 16, 6, '#EDE7F6');
+  a.dwell = rnd(70, 260);
+}
+
+function callMeeting(){
+  meeting = rnd(320, 520);
+  agents.forEach((a,k)=>{ const s=SEATS[k%SEATS.length]; a.tx=s.x; a.ty=s.y; a.state='meet'; a.dwell=meeting; });
+  const topics = ['오늘 이상한 일 뭐였죠','도달이 왜 0이죠','릴스로 갈까요','이 종목 이상한데요','내일 뭐 올리죠'];
+  agents.forEach((a,k)=>{ a.say = topics[(Math.floor(Math.random()*topics.length)+k)%topics.length]; a.sayT=meeting; });
+}
+
+function step(f){
+  if (meeting > 0) meeting--;
+  else if (--meetT <= 0){ callMeeting(); meetT = rnd(900, 1500); }
+
+  agents.forEach(a=>{
+    const dx=a.tx-a.x, dy=a.ty-a.y, d=Math.hypot(dx,dy);
+    if (d > 1.5){
+      a.x += dx/d*a.spd; a.y += dy/d*a.spd; a.moving = true;
+    } else {
+      a.moving = false;
+      if (meeting <= 0 && --a.dwell <= 0) pick(a);
+    }
+    if (a.sayT > 0) a.sayT--;
+  });
 }
 
 function bubble(bx, by, text, tone){
-  x.font = '11px "Apple SD Gothic Neo", sans-serif';
-  const w = Math.min(150, x.measureText(text).width + 14);
-  px(bx-2, by-2, w+4, 22, '#0B0814');
-  px(bx, by, w, 18, '#F2ECFA');
-  px(bx+8, by+18, 6, 4, '#F2ECFA');
-  x.fillStyle = '#171029'; x.textBaseline = 'top';
-  x.fillText(text, bx+7, by+4, w-12);
-  px(bx, by, 3, 18, tone);
+  x.font='11px "Apple SD Gothic Neo",sans-serif'; x.textAlign='left';
+  const w = Math.min(160, x.measureText(text).width + 14);
+  px(bx-2,by-2,w+4,22,'#0B0814'); px(bx,by,w,18,'#F2ECFA');
+  px(bx+8,by+18,6,4,'#F2ECFA'); px(bx,by,3,18,tone);
+  x.fillStyle='#171029'; x.textBaseline='top'; x.fillText(text,bx+7,by+4,w-12);
+}
+
+function drawAgent(a, f){
+  const img = imgs[a.i];
+  const bob = a.moving ? Math.abs(Math.sin(f/7 + a.i)) * 3 : (a.state==='desk' ? Math.sin(f/20+a.i)*1.2 : 0);
+  x.globalAlpha=.28; x.fillStyle='#0B0814';
+  x.beginPath(); x.ellipse(a.x, a.y+3, 15, 5, 0,0,7); x.fill(); x.globalAlpha=1;
+  if (img && img.complete && img.naturalWidth){
+    const s=2.0, w=Math.round(img.naturalWidth*s), h=Math.round(img.naturalHeight*s);
+    x.drawImage(img, Math.round(a.x-w/2), Math.round(a.y-h-bob), w, h);
+  }
+  x.font='bold 10px "Apple SD Gothic Neo",sans-serif'; x.textAlign='center';
+  x.fillStyle='#F2ECFA'; x.textBaseline='top'; x.fillText(a.m.name, a.x, a.y+6);
+  x.fillStyle=a.tone; px(a.x-13, a.y+20, 26, 3, a.tone);
+  x.textAlign='left';
+
+  if (a.m.status==='blocked' && Math.floor(f/22)%2===0){
+    x.font='bold 18px sans-serif'; x.fillStyle='#F2857A'; x.textAlign='center';
+    x.fillText('!', a.x+16, a.y-84); x.textAlign='left';
+  }
+  if (a.sayT>0 && a.say) bubble(a.x-20, a.y-108, a.say, a.tone);
 }
 
 function draw(f){
-  room(f);
-  const n = D.members.length;
-  const slotW = 720 / n;
-  D.members.forEach((m, i) => {
-    const tone = TONE[m.status] || '#9A8DB2';
-    const busy = m.status === 'working';
-    const dx = Math.round(i*slotW + slotW/2 - 58);
-    const dy = 244;
-    px(dx+38, dy-2, 44, 40, '#2A1F42');      // 의자 등받이
-    px(dx+41, dy+1, 38, 34, '#33264F');
-    desk(dx, dy, tone, busy, f + i*40);
+  furniture(f);
+  // 책상은 항상 캐릭터보다 뒤 (y 정렬 전에)
+  agents.forEach((a,i)=> deskAt(DESKS[i], a.tone, a.m.status==='working' && a.state==='desk' && !a.moving, f+i*40));
+  // 앞뒤 겹침 처리 — 아래에 있는 캐릭터가 앞에 그려진다
+  [...agents].sort((p,q)=>p.y-q.y).forEach(a=> drawAgent(a, f));
 
-    const img = imgs[i];
-    if (img && img.complete && img.naturalWidth){
-      const s = 2.6;
-      const w = Math.round(img.naturalWidth*s), h = Math.round(img.naturalHeight*s);
-      // 일하는 중이면 살짝 들썩인다
-      const bob = busy ? Math.round(Math.sin((f+i*30)/18)*2) : 0;
-      x.drawImage(img, Math.round(dx+58-w/2), Math.round(dy-h+8+bob), w, h);
-    }
-    // 이름표
-    x.font = 'bold 12px "Apple SD Gothic Neo", sans-serif';
-    x.fillStyle = '#F2ECFA'; x.textAlign = 'center'; x.textBaseline = 'top';
-    x.fillText(m.name, dx+58, dy+42);
-    x.font = '10px "Apple SD Gothic Neo", sans-serif'; x.fillStyle = tone;
-    x.fillText(m.role, dx+58, dy+58);
-    x.textAlign = 'left';
-
-    // 상태 표시 — 막히면 느낌표가 깜빡, 준비 중이면 Z
-    if (m.status === 'blocked' && Math.floor(f/22) % 2 === 0){
-      x.font = 'bold 20px sans-serif'; x.fillStyle = '#F2857A';
-      x.fillText('!', dx+96, dy-72);
-    }
-    if (m.status === 'new'){
-      x.font = '12px sans-serif'; x.fillStyle = '#9A8DB2';
-      x.globalAlpha = .4 + .6*((Math.sin(f/30)+1)/2);
-      x.fillText('z', dx+96, dy-70 - (f/6 % 10)); x.globalAlpha = 1;
-    }
-    if (i === 0 || m.status !== 'working') bubble(dx+2, dy-92, m.say, tone);
-  });
+  if (meeting > 0){
+    x.font='bold 11px "Apple SD Gothic Neo",sans-serif'; x.fillStyle='#F6B81D';
+    x.textAlign='center'; x.fillText('회의 중', TABLE.x, TABLE.y-52); x.textAlign='left';
+  }
 }
 
-let f = 0;
-(function loop(){ f++; draw(f); requestAnimationFrame(loop); })();
+let f=0;
+(function loop(){ f++; step(f); draw(f); requestAnimationFrame(loop); })();
 
 // 아래 표들
 const num = v => (v===null||v===undefined) ? '—' : (typeof v==='number' ? v.toLocaleString() : v);
